@@ -1,194 +1,174 @@
-📄 Contract Management Platform (Frontend)
+# 📄 Contract Management Platform (Frontend)
 
-A frontend-only Contract Management Platform built using React and TypeScript that models a real-world contract workflow. The system enables users to design reusable contract templates (Blueprints), generate contracts from those templates, manage contracts through a strict lifecycle, and monitor everything from a centralized dashboard.
+A frontend-only **Contract Management Platform** built with **React and TypeScript** that simulates a real-world contract workflow. The system focuses on clean architecture, strict lifecycle management, and UI-driven business logic with local persistence.
 
-🚀 Live Demo
+---
 
-👉 Add your Vercel deployment link here
+## 🚀 Live Demo
+👉 https://your-project-name.vercel.app
 
-https://your-project-name.vercel.app
+---
 
-🧩 Project Overview
+## 🧩 Project Overview
 
-This application simulates how contracts are handled in real organizations:
+This application allows users to:
+- Create reusable **Blueprints** (contract templates)
+- Generate **Contracts** from blueprints
+- Manage contracts through a **strict lifecycle**
+- View and track all contracts from a centralized **Dashboard**
 
-Blueprints define the structure of a contract
+There is **no backend**. All data is stored using **localStorage**.
 
-Contracts are created from blueprints
+---
 
-Each contract follows a strict lifecycle
+## 🔄 System Workflow
 
-A dashboard provides complete visibility
-
-The focus of this project is on:
-
-Product thinking
-
-UI-driven business logic
-
-State management
-
-Clean and scalable frontend architecture
-
-🏗️ System Workflow
-High-Level Flow
 Create Blueprint
-      ↓
+↓
 Create Contract from Blueprint
-      ↓
+↓
 Contract appears in Dashboard
-      ↓
+↓
 Lifecycle Management
 (CREATED → APPROVED → SENT → SIGNED → LOCKED)
-          ↘
-          REVOKED
+↘
+REVOKED
 
-🧠 Core Concepts
-1️⃣ Blueprint (Contract Template)
+yaml
+Copy code
 
-A Blueprint is a reusable template that defines:
+---
 
-Field types (Text, Date, Checkbox, Signature)
+## 🧠 Core Concepts
 
-Field labels
+### 1️⃣ Blueprint (Contract Template)
+- Defines the structure of a contract
+- Contains only field definitions (no values)
+- Reusable across multiple contracts
 
-Field positions on the contract
+### 2️⃣ Contract
+- Created from a blueprint
+- Stores field values entered by the user
+- Follows a strict lifecycle
 
-Blueprints do not store user-entered values.
+---
 
-2️⃣ Contract
+## 🔐 Contract Lifecycle
 
-A Contract is a real instance created from a blueprint.
-It:
+| Status    | Description |
+|----------|------------|
+| CREATED  | Contract created and editable |
+| APPROVED | Internally approved |
+| SENT     | Sent to recipient |
+| SIGNED   | Signed by recipient |
+| LOCKED   | Finalized, read-only |
+| REVOKED  | Cancelled, terminal state |
 
-Copies all fields from the blueprint
+### Allowed Transitions
+CREATED → APPROVED → SENT → SIGNED → LOCKED
+CREATED → REVOKED
+SENT → REVOKED
 
-Stores user-entered values
+yaml
+Copy code
 
-Follows a strict lifecycle
+- No lifecycle steps can be skipped
+- LOCKED and REVOKED are terminal states
+- Lifecycle rules are enforced via UI logic
 
-3️⃣ Contract Lifecycle
-State	Description
-CREATED	Contract created, editable
-APPROVED	Internally approved
-SENT	Sent to recipient
-SIGNED	Signed by recipient
-LOCKED	Finalized, read-only
-REVOKED	Cancelled, terminal state
-Allowed Transitions
-CREATED  → APPROVED → SENT → SIGNED → LOCKED
-CREATED  → REVOKED
-SENT     → REVOKED
+---
 
+## 📊 Dashboard Features
+- Table view of all contracts
+- Displays:
+  - Contract Name
+  - Blueprint Name
+  - Status
+  - Created Date
+- Filter contracts by status:
+  - Active
+  - Pending
+  - Signed
 
-No steps can be skipped
+---
 
-LOCKED and REVOKED are terminal states
+## 🛠️ Tech Stack
 
-Lifecycle rules are enforced at the UI level
+| Technology | Usage |
+|----------|------|
+| React (Vite) | Frontend framework |
+| TypeScript | Type safety |
+| React Router | Client-side routing |
+| Context API / Zustand | Global state management |
+| localStorage | Data persistence |
+| CSS / Tailwind | Styling |
 
-📊 Dashboard
+---
 
-The dashboard provides a centralized view of all contracts.
+## 📁 Folder Structure
 
-Features:
-
-Table view of all contracts
-
-Displays:
-
-Contract Name
-
-Blueprint Name
-
-Status
-
-Created Date
-
-Filter contracts by status:
-
-Active
-
-Pending
-
-Signed
-
-Quick access to view and manage contracts
-
-🛠️ Tech Stack
-Technology	Purpose
-React (Vite)	UI framework
-TypeScript	Type safety
-React Router	Client-side routing
-Context API / Zustand	Global state management
-localStorage	Data persistence
-CSS / Tailwind	Styling
-📁 Folder Structure
 src/
- ├── components/        # Reusable UI components
- ├── pages/             # Page-level views
- ├── store/             # Global state management
- ├── models/            # Type definitions
- ├── utils/             # Lifecycle & storage utilities
- ├── App.tsx            # Routing configuration
- ├── main.tsx           # App entry point
- └── index.css          # Global styles
+├── components/ # Reusable UI components
+├── pages/ # Page-level views
+├── store/ # Global state management
+├── models/ # Type definitions
+├── utils/ # Lifecycle & storage utilities
+├── App.tsx # Routing setup
+├── main.tsx # Entry point
+└── index.css # Global styles
 
-🗂️ State Management
+yaml
+Copy code
 
+---
+
+## 🗂️ State Management
 A single global store manages:
+- All blueprints
+- All contracts
 
-All blueprints
+Responsibilities:
+- Add blueprints
+- Create contracts from blueprints
+- Update contract data
+- Control lifecycle transitions
+- Persist state to localStorage
 
-All contracts
+---
 
-Store Responsibilities:
+## 💾 Persistence
+- All data is stored in **localStorage**
+- Page refresh restores full application state
+- No backend or API required
 
-Create and save blueprints
+---
 
-Create contracts from blueprints
+## 🧪 Manual Testing Checklist
+- Create a blueprint
+- Create a contract from blueprint
+- View contract in dashboard
+- Move contract through lifecycle
+- Lock or revoke contract
+- Refresh page and verify persistence
 
-Update contract data
+---
 
-Control lifecycle transitions
+## ⚠️ Assumptions & Limitations
+- No authentication or user roles
+- No backend or database
+- No PDF generation
+- Built for demonstration and evaluation purposes
 
-Persist all data to localStorage
+---
 
-💾 Persistence
+---
 
-All data is stored in localStorage
+## 🧑‍💻 Author
+Prathamesh Gawali
+Frontend Developer
 
-Refreshing or reopening the browser restores the full application state
 
-No backend or API is required
 
-🧪 Manual Testing Checklist
 
-✔ Create a blueprint
-✔ Create a contract from blueprint
-✔ View contract in dashboard
-✔ Move contract through lifecycle
-✔ Lock or revoke contract
-✔ Refresh page → data persists
 
-If all pass, the application is working correctly.
 
-⚠️ Assumptions & Limitations
-
-No authentication or user roles
-
-No backend or database
-
-No PDF export
-
-Designed for demonstration and evaluation purposes
-
-📌 Why React (Not Next.js)?
-
-React was chosen to keep the architecture:
-
-Lightweight
-
-Focused on UI-driven state management
-
-Free from unnecessary SSR or backend complexity
