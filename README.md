@@ -5,7 +5,7 @@ A frontend-only **Contract Management Platform** built with **React and TypeScri
 ---
 
 ## 🚀 Live Demo
-👉 https://your-project-name.vercel.app
+👉 https://contractmanagementplatform.vercel.app/
 
 ---
 
