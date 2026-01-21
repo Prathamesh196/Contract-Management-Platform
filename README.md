@@ -110,17 +110,15 @@ Copy code
 ## 📁 Folder Structure
 
 src/
-├── components/ # Reusable UI components
-├── pages/ # Page-level views
-├── store/ # Global state management
-├── models/ # Type definitions
-├── utils/ # Lifecycle & storage utilities
-├── App.tsx # Routing setup
-├── main.tsx # Entry point
-└── index.css # Global styles
+├── components/        # Reusable UI components
+├── pages/             # Page-level views
+├── store/             # Global state management
+├── models/            # Type definitions
+├── utils/             # Lifecycle & storage utilities
+├── App.tsx            # Routing setup
+├── main.tsx           # Entry point
+└── index.css          # Global styles
 
-yaml
-Copy code
 
 ---
 
